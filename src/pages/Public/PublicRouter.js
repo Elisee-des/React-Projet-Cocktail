@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout, Home, Service, Contact } from '@/pages/Public';
-import Error from '@/_utiles/Error';
+import Error from '@/_utils/Error';
 
 const PublicRoute = () => {
     return (
