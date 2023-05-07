@@ -2,9 +2,24 @@
     display: flex;
 }
 
+.AHeader {
+    text-align: center;
+    line-height: 50px;
+    background-color: grey;
+}
+
 .SideMenu {
     flex-grow: 1;
     border-right: solid 1px grey;
+}
+
+.SideMenu ul {
+    list-style: none;
+}
+
+.SideMenu ul li a {
+    text-decoration: none;
+    color: black;
 }
 
 #admin_body {
