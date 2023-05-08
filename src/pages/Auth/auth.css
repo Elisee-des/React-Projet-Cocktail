@@ -1,0 +1,21 @@
+form {
+    width: 180px;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.inscipt-form {
+    text-align: center;
+}
+
+.group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+}
+
+button {
+    width: 100%;
+}
