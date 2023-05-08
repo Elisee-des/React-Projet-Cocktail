@@ -11,7 +11,7 @@ const Login = () => {
 
     return (
         <div className='Login'>
-            <h3 className='inscipt-form'>Formulaire d'inscription</h3>
+            <h3 className='inscipt-form'>Formulaire de connexion</h3>
             <form action="">
                 <div className="group">
                     <label htmlFor="login">Identification</label>
