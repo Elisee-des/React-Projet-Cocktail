@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './auth.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
 
     let navigate = useNavigate();
 
     const [credentials, setCredential] = useState({
-        login: 'Elisee',
-        password: '0190'
+        email: 'admin@gmail.com',
+        password: 'admin'
     });
 
     const onChange = (e) => {
@@ -23,6 +24,12 @@ const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(credentials);
+        axios.post("http://localhost:8888/auth/login", credentials)
+            .then(response => {
+                console.log(response);
+                navigate('/admin')
+            })
+            .catch(error => console.log(error))
     }
 
     const handlRetour = () => {
@@ -35,7 +42,7 @@ const Login = () => {
             <form action="" onSubmit={onSubmit}>
                 <div className="group">
                     <label htmlFor="login">Identification</label>
-                    <input type="text" name='login' value={credentials.login} onChange={onChange} />
+                    <input type="text" name='email' value={credentials.email} onChange={onChange} />
                 </div>
                 <div className="group">
                     <label htmlFor="password">Mot de passe</label>

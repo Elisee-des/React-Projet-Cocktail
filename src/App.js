@@ -13,11 +13,11 @@ function App() {
         <Routes>
           <Route path='/*' element={ <PublicRouter />} />
           <Route path='/admin/*' element={ 
-          
+
               <AuhtGuard>
                 <AdminRouter/>
               </AuhtGuard>
-              
+
             } />
           <Route path='/auth/*' element={ <AuthRouter />} />
         </Routes>
