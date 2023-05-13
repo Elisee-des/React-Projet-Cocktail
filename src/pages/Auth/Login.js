@@ -24,8 +24,7 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(credentials);
-        axios.post("http://localhost:8888/auth/login", credentials)
+        accountService.Login(credentials)
             .then(response => {
                 console.log(response);
                 accountService.saveToken(response.data.access_token)
@@ -35,7 +34,7 @@ const Login = () => {
     }
 
     const handlRetour = () => {
-        navigate('../home');
+        navigate('/');
     }
 
     return (

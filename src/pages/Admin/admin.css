@@ -5,7 +5,12 @@
 .AHeader {
     text-align: center;
     line-height: 50px;
-    background-color: grey;
+    background-color: rgb(234, 230, 230);
+    display: flex;
+    justify-content: space-between;
+}
+.AHeader button {
+    width: 80px;
 }
 
 .SideMenu {
