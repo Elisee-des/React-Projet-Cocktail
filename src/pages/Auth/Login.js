@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './auth.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { accountService } from '@/_services/account.service';
 
 const Login = () => {
 
@@ -27,9 +28,10 @@ const Login = () => {
         axios.post("http://localhost:8888/auth/login", credentials)
             .then(response => {
                 console.log(response);
-                navigate('/admin')
+                accountService.saveToken(response.data.access_token)
+                navigate('/admin');
             })
-            .catch(error => console.log(error))
+            .catch(error => console.log(error));
     }
 
     const handlRetour = () => {
