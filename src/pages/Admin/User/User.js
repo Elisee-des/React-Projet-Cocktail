@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { userService } from '@/_services';
 
 const User = () => {
@@ -7,7 +7,7 @@ const User = () => {
     const [users, setUsers] = useState([]);
     const flag = useRef(false);
 
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
 
     useEffect( ()=> {
         console.log('useEffect');
@@ -47,7 +47,7 @@ const User = () => {
                     {
                         users.map(user => (
                             <tr key={user.id}>
-                                <td>{user.id}</td>
+                                <td><Link to={`/admin/user/edit/${user.id}`} >{user.id}</Link></td>
                                 <td>{user.nom}</td>
                                 <td>{user.prenom}</td>
                                 <td>{user.email}</td>
