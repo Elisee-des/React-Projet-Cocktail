@@ -4,7 +4,7 @@ import { userService } from '@/_services';
 
 
 const UserEdit = () => {
-
+   
     let {uid} = useParams();
     let navigate = useNavigate();
     console.log(uid);
