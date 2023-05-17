@@ -77,7 +77,7 @@ const UserEdit = () => {
                     <button onClick={() => handlRetour()}>Retour</button>
                 </div>
             </form>
-        </div>
+            </div>
         </div>
     );
 };
