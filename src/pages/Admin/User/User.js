@@ -24,6 +24,16 @@ const User = () => {
             return () => flag.current = true;
     },[])
 
+    const detUser = (userId) => {
+        console.log(userId)
+        userService.deleteUser(userId)
+            .then(res => {
+                console.log(res)
+                setUsers((current) => current.filter(user => user.id !== userId))
+            })
+            .catch(err => console.log(err))
+    }
+
     // const marcel = (userId) => {
     //     console.log("click");
     //     navigate("../edit/"+userId);
@@ -47,6 +57,7 @@ const User = () => {
                     {
                         users.map(user => (
                             <tr key={user.id}>
+                                <td><span className='det_ubtn' onClick={ ()=> detUser(user.id) }>X</span></td>
                                 <td><Link to={`/admin/user/edit/${user.id}`} >{user.id}</Link></td>
                                 <td>{user.nom}</td>
                                 <td>{user.prenom}</td>

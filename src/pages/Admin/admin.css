@@ -31,3 +31,8 @@
     flex-grow: 6;
     padding-left: 15px;
 }
+
+.det_ubtn {
+    cursor: pointer;
+    color: red;
+}

@@ -5,20 +5,29 @@ import { userService } from '@/_services';
 
 const UserEdit = () => {
    
-    let {uid} = useParams();
+    const {uid} = useParams();
     let navigate = useNavigate();
-    console.log(uid);
     const flag = useRef(false);
-    const [user, setUsers] = useState({});
+    const [user, setUser] = useState([]);
 
 
     const onChange = (e) => {
-
+        console.log(e.target.name)
+        console.log(e.target.value)
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value
+        })
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-
+        console.log(user);
+        userService.updateUser(user)
+            .then(res => {
+                navigate('../index')
+            })
+            .catch(err => console.log(err));
     }
 
     useEffect( ()=> {
@@ -28,12 +37,13 @@ const UserEdit = () => {
             userService.getUser(uid)
                 .then((res)=> {
                     console.log(res.data.data)
-                    setUsers(res.data.data)
+                    setUser(res.data.data)
                 })
                 .catch(err => console.log(err));
         }
 
-            return () => flag.current = true;
+        return () => flag.current = true;
+       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const handlRetour = () => {
@@ -45,14 +55,14 @@ const UserEdit = () => {
             Edit User !!
             <div className='Login'>
             <h3 className='inscipt-form'>Edition de </h3>
-            <form action="">
+            <form action="" onSubmit={onSubmit}>
                 <div className="group">
                     <label htmlFor="nom">Nom</label>
-                    <input type="text" name='nom' value={user.email} onChange={onChange} />
+                    <input type="text" name='nom' value={user.nom} onChange={onChange} />
                 </div>
                 <div className="group">
                     <label htmlFor="prenom">Prénom</label>
-                    <input type="text" name='prenom' value={user.password} onChange={onChange} />
+                    <input type="text" name='prenom' value={user.prenom} onChange={onChange} />
                 </div>
                 <div className="group">
                     <label htmlFor="pseudo">Pseudo</label>
@@ -63,7 +73,7 @@ const UserEdit = () => {
                     <input type="text" name='email' value={user.email} onChange={onChange} />
                 </div>
                 <div className="group">
-                    <button>Connexion</button>
+                    <button>Modifier</button>
                     <button onClick={() => handlRetour()}>Retour</button>
                 </div>
             </form>
