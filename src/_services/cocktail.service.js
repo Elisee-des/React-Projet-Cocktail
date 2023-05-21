@@ -9,6 +9,8 @@ let getAllCocktail = () => {
     return Axios.get('/cocktails');
 }
 
+
+
 /**
  * @param {number} cid 
  * @returns {promise}
